@@ -20,10 +20,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Tag.findOne({
-    where: {
-      id: req.params.id
-    },
+  Tag.findByPk(req.params.id, {
     include: [
       {
         model: Product,
@@ -31,6 +28,14 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
+    .then(dbTagData => {
+      if (!dbTagData) {
+        res.status(404).json({ message: 'No tag found with this id' });
+        return;
+      }
+      res.json(dbTagData);
+    }
+    )
 });
 
 router.post('/', (req, res) => {
