@@ -10,10 +10,10 @@ Tag.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
     tag_name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     }
   },
   {
@@ -24,5 +24,6 @@ Tag.init(
     modelName: 'tag',
   }
 );
+
 
 module.exports = Tag;
